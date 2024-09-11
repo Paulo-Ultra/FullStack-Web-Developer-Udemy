@@ -34,8 +34,7 @@ public class Instructor {
 
     public Instructor() {}
 
-    public Instructor(Long instructorId, String firstName, String lastName, String summary, User user) {
-        this.instructorId = instructorId;
+    public Instructor(String firstName, String lastName, String summary, User user) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.summary = summary;

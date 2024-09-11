@@ -34,8 +34,7 @@ public class Student {
 
     public Student() {}
 
-    public Student(Long studentId, String firstName, String lastName, String level, User user) {
-        this.studentId = studentId;
+    public Student(String firstName, String lastName, String level, User user) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.level = level;
