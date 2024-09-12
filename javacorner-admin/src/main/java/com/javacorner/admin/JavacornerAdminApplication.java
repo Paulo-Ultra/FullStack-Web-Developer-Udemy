@@ -2,7 +2,6 @@ package com.javacorner.admin;
 
 import com.javacorner.admin.dao.*;
 import com.javacorner.admin.utility.OperationUtility;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,20 +9,23 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JavacornerAdminApplication implements CommandLineRunner {
 
-    @Autowired
-    private UserDao userDao;
+    private final UserDao userDao;
 
-    @Autowired
-    private CourseDao courseDao;
+    private final CourseDao courseDao;
 
-    @Autowired
-    private InstructorDao instructorDao;
+    private final InstructorDao instructorDao;
 
-    @Autowired
-    private StudentDao studentDao;
+    private final StudentDao studentDao;
 
-    @Autowired
-    private RoleDao roleDao;
+    private final RoleDao roleDao;
+
+    public JavacornerAdminApplication(UserDao userDao, CourseDao courseDao, InstructorDao instructorDao, StudentDao studentDao, RoleDao roleDao) {
+        this.userDao = userDao;
+        this.courseDao = courseDao;
+        this.instructorDao = instructorDao;
+        this.studentDao = studentDao;
+        this.roleDao = roleDao;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(JavacornerAdminApplication.class, args);
