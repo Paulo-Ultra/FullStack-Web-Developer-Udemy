@@ -114,8 +114,8 @@ public class OperationUtility {
             throw new EntityNotFoundException("Role not found");
         }
         User user1 = new User("instructorUser1@mail.com", "pass1");
-        userDao.save(user1);
         user1.assignRoleToUser(role);
+        userDao.save(user1);
 
         Instructor instructor1 = new Instructor("instructor1FN",
                 "instructor1LN", "Experienced Instructor", user1);
@@ -151,15 +151,15 @@ public class OperationUtility {
             throw new EntityNotFoundException("Role not found");
         }
         User user1 = new User("stdUser1@mail.com", "pass1");
-        userDao.save(user1);
         user1.assignRoleToUser(role);
+        userDao.save(user1);
 
-        Student student1 = new Student("student1FN", "student1LN", "master", user1);
+        Student student1 = new Student("student1FN", "student1LN", "Master", user1);
         studentDao.save(student1);
 
         User user2 = new User("stdUser2@mail.com", "pass2");
-        userDao.save(user2);
         user2.assignRoleToUser(role);
+        userDao.save(user2);
 
         Student student2 = new Student("student1FN", "student1LN", "Phd", user2);
         studentDao.save(student2);
@@ -173,7 +173,7 @@ public class OperationUtility {
     }
 
     private static void removeStudent(StudentDao studentDao) {
-        studentDao.deleteById(1L);
+        studentDao.deleteById(2L);
     }
 
     private static void fetchStudents(StudentDao studentDao) {
@@ -199,7 +199,7 @@ public class OperationUtility {
     }
 
     private static void deleteCourse(CourseDao courseDao) {
-        courseDao.findById(2L);
+        courseDao.deleteById(2L);
     }
 
     private static void fetchCourses(CourseDao courseDao) {
