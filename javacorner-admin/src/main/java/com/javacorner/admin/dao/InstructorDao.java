@@ -6,7 +6,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface InstructorDao extends JpaRepository<Instructor, Long> {
 
     @Query(value = "SELECT I FROM Instructor as I WHERE I.firstName LIKE %:name% OR I.lastName LIKE %:name%")
