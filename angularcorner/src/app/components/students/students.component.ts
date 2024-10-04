@@ -12,7 +12,7 @@ export class StudentsComponent implements OnInit {
 
 
   // constructor() { }
-  constructor(private modalService: NgbModal) {}
+  constructor(private readonly modalService: NgbModal) {}
 
   ngOnInit(): void {
   }

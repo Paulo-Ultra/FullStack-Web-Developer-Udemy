@@ -28,10 +28,10 @@ export class CoursesComponent implements OnInit {
   submitted: boolean = false;
   defaultInstructor!: Instructor;
 
-  constructor(private modalService: NgbModal,
-              private fb: FormBuilder,
-              private courseService: CoursesService,
-              private instructorsService: InstructorsService) {
+  constructor(private readonly modalService: NgbModal,
+              private readonly fb: FormBuilder,
+              private readonly courseService: CoursesService,
+              private readonly instructorsService: InstructorsService) {
   }
 
   ngOnInit(): void {
@@ -61,7 +61,7 @@ export class CoursesComponent implements OnInit {
       .pipe(
         catchError(err => {
           this.errorMessage = err.message;
-          return throwError(err);
+          return throwError(() => err);
         })
       )
   }
@@ -111,7 +111,7 @@ export class CoursesComponent implements OnInit {
     this.instructors$ = this.instructorsService.findAllInstructors().pipe(
       catchError(err => {
         this.errorInstructorMessage = err.message;
-        return throwError(err);
+        return throwError(() => err);
       })
     )
   }

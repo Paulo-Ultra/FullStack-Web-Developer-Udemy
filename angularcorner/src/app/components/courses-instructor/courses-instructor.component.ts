@@ -25,10 +25,10 @@ export class CoursesInstructorComponent implements OnInit {
   submitted: boolean = false;
   updateCourseFormGroup!: FormGroup;
 
-  constructor(private route: ActivatedRoute,
-              private courseService: CoursesService,
-              private fb: FormBuilder,
-              private modalService: NgbModal) { }
+  constructor(private readonly route: ActivatedRoute,
+              private readonly courseService: CoursesService,
+              private readonly fb: FormBuilder,
+              private readonly modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.instructorId = this.route.snapshot.params['id'];
@@ -53,7 +53,7 @@ export class CoursesInstructorComponent implements OnInit {
     this.pageCourses = this.courseService.getCoursesByInstructor(this.instructorId, this.currentPage, this.pageSize)
       .pipe(catchError(err => {
         this.errorMessage = err.message;
-        return throwError(err);
+        return throwError(() => err);
       }));
   }
 

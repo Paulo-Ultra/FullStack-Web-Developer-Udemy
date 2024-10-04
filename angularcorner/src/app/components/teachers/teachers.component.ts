@@ -32,11 +32,11 @@ export class TeachersComponent implements OnInit {
   coursesPageSize: number = 5;
   coursesErrorMessage!: string;
 
-  constructor(private modalService: NgbModal,
-              private fb: FormBuilder,
-              private instructorService: InstructorsService,
-              private userService: UsersService,
-              private courseService: CoursesService) {}
+  constructor(private readonly modalService: NgbModal,
+              private readonly fb: FormBuilder,
+              private readonly instructorService: InstructorsService,
+              private readonly userService: UsersService,
+              private readonly courseService: CoursesService) {}
 
   ngOnInit(): void {
     this.searchFormGroup = this.fb.group({
@@ -67,7 +67,7 @@ export class TeachersComponent implements OnInit {
     this.pageInstructors = this.instructorService.searchInstructors(keyword, this.currentPage, this.pageSize)
       .pipe(catchError(err => {
         this.errorMessage = err.message;
-        return throwError(err);
+        return throwError(() => err);
       }));
   }
 
@@ -124,7 +124,7 @@ export class TeachersComponent implements OnInit {
     this.pageCourses$ = this.courseService.getCoursesByInstructor(instructor.instructorId, this.coursesCurrentPage, this.coursesPageSize)
       .pipe(catchError(err => {
         this.coursesErrorMessage = err.message;
-        return throwError(err);
+        return throwError(() => err);
       }))
   }
 
