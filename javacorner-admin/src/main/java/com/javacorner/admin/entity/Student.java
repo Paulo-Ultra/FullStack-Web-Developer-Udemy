@@ -1,6 +1,6 @@
 package com.javacorner.admin.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
